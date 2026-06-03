@@ -25,7 +25,11 @@ The tracker's background is opaque. But you can make it display in OBS as having
 
 # Tips
 
-I am using Visual Studio to run this program. OBS can't display the mouse tracker if it's minimized, but putting it behind other windows/tabs or dragging it partially offscreen is fine. Sometimes I have noticed that the background of the tracker looks like a glitchy copy of another part of the screen, but that can be fixed by minimizing and unminimizing the tracker. Sometimes the dot used to somehow get a NaN position which made the dot disappear. I think I fixed that but if it still happens, you have to close the tracker and reopen it. You can resize and recolor things in OBS or by changing numbers in the Program.cs file.
+- OBS can't display the mouse tracker if it's minimized, but putting it behind other windows/tabs or dragging it partially offscreen is fine.
+- I am using Visual Studio to run this program.
+- Sometimes I have noticed that the background of the tracker looks like a glitchy copy of another part of the screen, but that can be fixed by minimizing and unminimizing the tracker.
+- Sometimes the dot used to somehow get a NaN position which made the dot disappear. I think I fixed that but if it still happens, you have to close the tracker and reopen it.
+- In the Program.cs file there is a number called movementMultiplier which controls how much the dot moves. You can change it to get more or less movement. I have it set as 0.06. You can also change the size and color of the dot and the size of the tracker as well.
 
 # License
 
