@@ -2,12 +2,18 @@ using System.Runtime.InteropServices;
 
 class TestClass
 {
-    // You can change these to resize/recolor the dot, and resize the window.
-    static readonly int dotSize = 5;
+    // A multiplier that controls how much the dot moves
+    static readonly double movementMultiplier = 0.06;
+
+    // The color of the dot
     static readonly Color dotColor = Color.LimeGreen;
+
+    // How many pixels wide the dot is
+    static readonly int dotSize = 5;
+
+    // How many pixels wide the window is
     static readonly int windowWidth = 300;
     static readonly int windowHeight = 300;
-
 
     private delegate int HOOKPROC(int code, IntPtr wParam, IntPtr lParam);
     [DllImport("user32.dll", SetLastError = true)]
@@ -87,10 +93,8 @@ class TestClass
         // Internal floating point values for x and y, looped to be within the small numerical range
         void UpdateDotsInternally(int deltaX, int deltaY)
         {
-            double lengthMultiplier = 0.06;
-
-            this.x += deltaX * lengthMultiplier;
-            this.y += deltaY * lengthMultiplier;
+            this.x += deltaX * movementMultiplier;
+            this.y += deltaY * movementMultiplier;
             if (this.ClientSize.Width != 0.0)
                 this.x %= this.ClientSize.Width;
             if (this.ClientSize.Height != 0.0)
