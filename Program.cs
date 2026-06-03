@@ -2,6 +2,13 @@ using System.Runtime.InteropServices;
 
 class TestClass
 {
+    // You can change these to resize/recolor the dot, and resize the window.
+    static readonly int dotSize = 5;
+    static readonly Color dotColor = Color.LimeGreen;
+    static readonly int windowWidth = 300;
+    static readonly int windowHeight = 300;
+
+
     private delegate int HOOKPROC(int code, IntPtr wParam, IntPtr lParam);
     [DllImport("user32.dll", SetLastError = true)]
     static extern bool RegisterRawInputDevices(RAWINPUTDEVICE[] pRawInputDevice, uint numDevices, uint size);
@@ -12,14 +19,16 @@ class TestClass
     [STAThread]
     static void Main()
     {
-        Application.Run(new MouseMoveDetector());
+        Form form = new MouseMoveDetector();
+        form.Size = new Size(windowWidth, windowHeight);
+        form.MaximizeBox = false;
+        form.FormBorderStyle = FormBorderStyle.FixedSingle;
+        Application.Run(form);
     }
 
     public class MouseMoveDetector : Form
     {
         static readonly int numRows = 3;
-        static readonly int dotSize = 5;
-        static readonly Color dotColor = Color.LimeGreen;
 
         readonly Panel[,] dots = new Panel[numRows, numRows];
         readonly System.Windows.Forms.Timer updateTimer = new();
@@ -74,7 +83,7 @@ class TestClass
                 UpdateDotsInternally(input.data.lLastX, input.data.lLastY);
             base.WndProc(ref m);
         }
-        
+
         // Internal floating point values for x and y, looped to be within the small numerical range
         void UpdateDotsInternally(int deltaX, int deltaY)
         {
@@ -89,7 +98,7 @@ class TestClass
             if (this.x < 0) this.x += this.ClientSize.Width;
             if (this.y < 0) this.y += this.ClientSize.Height;
         }
-        
+
         // Visual integer values for x and y, applied to all 9 copies.
         void UpdateDotsVisually(object? _sender, EventArgs _e)
         {
