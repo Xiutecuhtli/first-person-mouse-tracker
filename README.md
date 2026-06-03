@@ -12,22 +12,20 @@ https://youtu.be/F3uwYt35K8o?t=2h33m47s
 
 # How to make the background transparent in OBS
 
-You can make OBS display it as a transparent background with an opaque green dot (although it will only be transparent in OBS. the tracker itself will still have an opaque background). To do this:
+The tracker's background is opaque. But you can make it display in OBS as having a transparent background and opaque green dot instead. To do this:
 
-1. While the mouse detector is running, in OBS in the Sources tab add a Window Capture and set its Window as MouseDetector.exe.
-2. In the Sources tab, right click that Window Capture and click Filters, then add an Effect Filter and choose Color Key.
-3. Click the Color Key and change its settings to Key Color Type: Custom Color, Key Color: #f0f0f0, Similarity: 50, Smoothness: 50, Opacity: 1.0000, Contrast: 0.00, Brightness: 0.0000, Gamma: 0.00.
-4. Add another Effect Filter and choose Chroma Key. Click it and change its settings to Key Color Type: Magenta, Similarity: 400, Smoothness: 80, Key Color Spill Reduction: 100, Opacity: 1.0000, Contrast: 0.00, Brightness: 0.0000, Gamma: 0.00
-5. Exit the filters panel, and in the Sources tab, add another Window Capture and set its Window as MouseDetector.exe. 
-6. In the Sources tab, right click this Window Capture and click Filters, then add an Effect Filter and choose Chroma Key. Click it and change its settings to Key Color Type: Magenta, Similarity: 400, Smoothness: 80, Key Color Spill Reduction: 100, Opacity: 0.0050, Contrast: 0.00, Brightness: 0.0000, Gamma: 0.00.
-7. Exit the filters panel, and in the Sources tab, shift click both Window Captures and right click the selection and click Group Selected Items
-8. In the OBS display, drag the mouse detector around as needed.
-
-If you want a different amount of transparency, change step 6's Opacity: 0.0050 to a different number.
+1. Have the mouse detector running and unminimized, and OBS open.
+2. In the Sources tab of OBS, add a new source, choose Window Capture and set its Window as MouseDetector.exe.
+3. In the Sources tab, rightclick that Window Capture and click Filters, then add an Effect Filter and choose Chroma Key.
+4. Click the Chroma Key and change its settings to Key Color Type: Magenta, Similarity: 400, Smoothness: 80, Key Color Spill Reduction: 100, Opacity: 1.0000, Contrast: 0.00, Brightness: 0.0000, Gamma: 0.00.
+5. Add another Effect Filter and now choose Color Key. Click it and change its settings to Key Color Type: Custom Color, Key Color: #f0f0f0, Similarity: 50, Smoothness: 50, Opacity: 1.0000, Contrast: 0.00, Brightness: 0.0000, Gamma: 0.00.
+6. Exit the filters panel, and repeat steps 2-4, except with Opacity: 0.0050. You could change this number to make the background more or less transparent.
+7. Exit the filters panel, and in the Sources tab, shift click both of the Window Captures. Right click one of them and click Group Selected Items.
+8. In the OBS display, you can now click and drag the mouse detector box around or resize it as needed.
 
 # Tips
 
-I am using Visual Studio to run this program. OBS can't display the mouse tracker if it's minimized, but putting it behind other windows/tabs or dragging it partially offscreen is fine. Sometimes I have noticed that the background of the tracker looks like a glitchy copy of another part of the screen, but that can be fixed by minimizing and unminimizing the tracker. I'm pretty sure I have fixed this bug but sometimes the dot will somehow reach a NaN position which makes the dot disappear. If it still happens, you have to close the tracker and reopen it.
+I am using Visual Studio to run this program. OBS can't display the mouse tracker if it's minimized, but putting it behind other windows/tabs or dragging it partially offscreen is fine. Sometimes I have noticed that the background of the tracker looks like a glitchy copy of another part of the screen, but that can be fixed by minimizing and unminimizing the tracker. Sometimes the dot used to somehow get a NaN position which made the dot disappear. I think I fixed that but if it still happens, you have to close the tracker and reopen it. You can resize and recolor things in OBS or by changing numbers in the Program.cs file.
 
 # License
 
