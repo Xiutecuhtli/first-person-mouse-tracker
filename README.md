@@ -4,7 +4,7 @@ Operating system and hardware stuff is not exactly my expertise, but I am pretty
 
 # Picture example:
 
-<img width="1456" height="763" alt="image" src="https://github.com/user-attachments/assets/ba6a41a8-34de-4bac-87ed-7e1229389720" />
+<img width="1448" height="762" alt="image" src="https://github.com/user-attachments/assets/b6c04f9e-ade7-4b80-8a84-ce34f10ba65c" />
 
 # Video example
 
